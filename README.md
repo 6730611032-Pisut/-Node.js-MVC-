@@ -1,4 +1,4 @@
-ติดตั้ง Library (NPM Packages) ที่ต้องใช้
+ติดตั้ง Library ที่ต้องใช้
 ก่อนจะเริ่มรันโปรเจกต์ ต้องติดตั้งเครื่องมือเหล่านี้ก่อน โดยเปิด Terminal แล้วพิมพ์คำสั่ง:
 npm init -y
 npm install express ejs mysql2 multer
