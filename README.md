@@ -24,5 +24,5 @@ CREATE TABLE `products` (
 สร้างโฟลเดอร์ public
 ข้างใน public ให้สร้างโฟลเดอร์ uploads
 
-เเล้วก็พิมพ์คำสั่ง npm run start
+เเล้วก็พิมพ์คำสั่ง npm run start หรือ node app.js
 จากนั้นเปิด Browser ไปที่: http://localhost:3000
