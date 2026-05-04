@@ -1,0 +1,73 @@
+<%- include('partials/header.ejs') %>
+<%- include('partials/navbar.ejs') %>
+
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-header bg-warning text-dark">
+                    <h4 class="mb-0">Edit Product</h4>
+                </div>
+                <div class="card-body p-4">
+                    
+                    <% if (message != '') { %>
+                        <div class="alert alert-danger" role="alert">
+                            <%= message %>
+                        </div>
+                    <% } %>
+
+                    <% if (product) { %>
+                        <form action="/product/edit/<%= product.id %>" method="POST" enctype="multipart/form-data">
+                            
+                            <div class="mb-3">
+                                <label for="name" class="form-label fw-bold">Product Name</label>
+                                <input type="text" class="form-control" id="name" name="name" value="<%= product.name %>" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="category" class="form-label fw-bold">Category</label>
+                                <input type="text" class="form-control" id="category" name="category" placeholder="Enter product category" required>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="price" class="form-label fw-bold">Price (฿)</label>
+                                    <input type="number" step="0.01" min="0" class="form-control" id="price" name="price" value="<%= product.price %>" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="stock" class="form-label fw-bold">Stock Quantity</label>
+                                    <input type="number" min="0" class="form-control" id="stock" name="stock" value="<%= product.stock %>" required>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="form-label fw-bold d-block">Current Image</label>
+                                <img src="/uploads/<%= product.image %>" class="img-thumbnail mb-2" style="max-width: 200px;">
+                                
+                                <label for="image" class="form-label d-block fw-bold mt-2">Change Image (Leave blank to keep current)</label>
+                                <input type="file" class="form-control" id="image" name="image" accept="image/*">
+                                
+                                <input type="hidden" name="old_image" value="<%= product.image %>">
+                            </div>
+
+                            <hr>
+                            
+                            <div class="d-flex justify-content-end gap-2">
+                                <a href="/" class="btn btn-secondary">Cancel</a>
+                                <button type="submit" class="btn btn-success">Update Product</button>
+                            </div>
+
+                        </form>
+                    <% } else { %>
+                        <div class="text-center py-5">
+                            <p class="text-muted">Product not found.</p>
+                            <a href="/" class="btn btn-primary">Back to Dashboard</a>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer.ejs') %>
